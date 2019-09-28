@@ -25,8 +25,8 @@ public class Server {
             String valid = "Please enter a valid input";
             while ((inputLine = in.readLine()) != null) {
             	if(inputLine.equals("1")) {
-            		java.util.Date date=new java.util.Date();
-            		out.println(date);
+            		String[] args = new String[] {"/bin/bash", "-c", "date", "with", "args"};
+					Process proc = new ProcessBuilder(args).start();
             	}
             	
             	else if(inputLine.equals("2")) {
