@@ -49,10 +49,13 @@ public class Server {
 					Process proc = new ProcessBuilder(memory).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((send = reader.readLine()) != null) {
+					for (int i = 0; i < reader.length; i++) {
+						while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
-                    }
-            	}
+                    	}
+					}
+                    
+            	
             	
             	else if(inputLine.equals("4")) {
             		String[] netStat  = new String[] {"/bin/bash", "-c", "netStat", "with", "args"};
