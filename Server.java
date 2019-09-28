@@ -1,6 +1,9 @@
 import java.net.*;
 import java.lang.*;
 import java.util.*;
+
+import org.omg.CORBA.WCharSeqHelper;
+
 import java.io.*;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
@@ -49,11 +52,13 @@ public class Server {
 					Process proc = new ProcessBuilder(memory).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-					for (int i = 0; i < memory.length; i++) {
+					
 						while((send = reader.readLine()) != null) {
-                            out.println(send + "\n");
+							for (int i = 0; i < 4; i++) {
+								out.println(send + "\n");
+							}  
                     	}
-					}
+					
 				}
                     
             	
