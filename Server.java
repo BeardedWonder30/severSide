@@ -29,7 +29,7 @@ public class Server {
 					Process proc = new ProcessBuilder(date).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
@@ -46,7 +46,7 @@ public class Server {
             	
             	else if(inputLine.equals("3")) {
             		String[] memory  = new String[] {"/bin/bash", "-c", "free", "with", "args"};
-					Process proc = new ProcessBuilder(free).start();
+					Process proc = new ProcessBuilder(memory).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
                     while((send = reader.readLine()) != null) {
