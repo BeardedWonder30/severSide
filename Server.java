@@ -2,7 +2,7 @@ import java.net.*;
 import java.lang.*;
 import java.util.*;
 
-import org.omg.CORBA.WCharSeqHelper;
+
 
 import java.io.*;
 import java.lang.management.ManagementFactory;
@@ -52,9 +52,9 @@ public class Server {
 					Process proc = new ProcessBuilder(memory).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-					
+					for (int i = 0; i < 4; i++) {
 						while((send = reader.readLine()) != null) {
-							for (int i = 0; i < 4; i++) {
+							
 								out.println(send + "\n");
 							}  
                     	}
