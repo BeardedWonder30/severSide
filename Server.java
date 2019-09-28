@@ -50,14 +50,15 @@ public class Server {
             	else if(inputLine.equals("3")) {
             		String[] memory  = new String[] {"/bin/bash", "-c", "free", "with", "args"};
 					Process proc = new ProcessBuilder(memory).start();
+					p = Runtime.getRuntime().exec("ls -aF");
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-					for (int i = 0; i < 4; i++) {
+					
 						while((send = reader.readLine()) != null) {
-							
-								out.println(send + "\n");
-							}  
-                    	}
+							out.println(send);
+						}  
+						p.waitFor();
+                    	p.destroy();
 					
 				}
                     
