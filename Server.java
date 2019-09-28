@@ -13,7 +13,7 @@ public class Server {
             System.exit(1);
         }*/
          
-        int portNumber = 8000 //Integer.parseInt(args[0]);
+        int portNumber = 8000; //Integer.parseInt(args[0]);
          
         try (
             ServerSocket serverSocket = new ServerSocket(portNumber);//Integer.parseInt(args[0]));
@@ -39,7 +39,7 @@ public class Server {
 					Process proc = new ProcessBuilder(uptime).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
@@ -49,7 +49,7 @@ public class Server {
 					Process proc = new ProcessBuilder(free).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
@@ -59,7 +59,7 @@ public class Server {
 					Process proc = new ProcessBuilder(netStat).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
@@ -69,7 +69,7 @@ public class Server {
 					Process proc = new ProcessBuilder(currentUser).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
@@ -79,7 +79,7 @@ public class Server {
 					Process proc = new ProcessBuilder(processes).start();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
 					String send= "";
-                    while((line = reader.readLine()) != null) {
+                    while((send = reader.readLine()) != null) {
                             out.println(send + "\n");
                     }
             	}
