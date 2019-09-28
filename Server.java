@@ -13,10 +13,10 @@ public class Server {
             System.exit(1);
         }*/
          
-        int portNumber = 192.168.101.108:8000 //Integer.parseInt(args[0]);
+        int portNumber = 8000 //Integer.parseInt(args[0]);
          
         try (
-            ServerSocket serverSocket = new ServerSocket(Integer.parseInt(args[0]));
+            ServerSocket serverSocket = new ServerSocket(portNumber);//Integer.parseInt(args[0]));
             Socket clientSocket = serverSocket.accept();     
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);                   
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -25,46 +25,64 @@ public class Server {
             String valid = "Please enter a valid input";
             while ((inputLine = in.readLine()) != null) {
             	if(inputLine.equals("1")) {
-            		String[] args = new String[] {"/bin/bash", "-c", "date", "with", "args"};
-					Process proc = new ProcessBuilder(args).start();
+            		String[] date = new String[] {"/bin/bash", "-c", "date", "with", "args"};
+					Process proc = new ProcessBuilder(date).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
             	}
             	
             	else if(inputLine.equals("2")) {
-            	 RuntimeMXBean runtimeBean = ManagementFactory.getRuntimeMXBean();
-    			 long upTime = runtimeBean.getUptime();
-    			 out.println(upTime/1000 + " seconds");
+					String[] uptime  = new String[] {"/bin/bash", "-c", "uptime", "with", "args"};
+					Process proc = new ProcessBuilder(uptime).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
             	}
             	
             	else if(inputLine.equals("3")) {
-            		Process run = Runtime.getRuntime().exec(new String[] {"bash", "-c", "free"});
-            		//long processors = Runtime.getRuntime().availableProcessors();
-            		//long memory = Runtime.getRuntime().freeMemory();
-            		//long totalMem = Runtime.getRuntime().totalMemory();
-            		
-            		//out.println("Available processors (cores) " + processors +". Free memory  available" + memory + ". Total memory available "
-            			//	+ totalMem + ".");
-            		out.println(run);
-            		
-            		//Host memory use
-        			//Command: free -h (possibly)
+            		String[] memory  = new String[] {"/bin/bash", "-c", "free", "with", "args"};
+					Process proc = new ProcessBuilder(free).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
             	}
             	
-            	/*else if(inputLine.equals("4")) {
-            		//Host Netstat
-        			//Command: netstat
-            	}*/
+            	else if(inputLine.equals("4")) {
+            		String[] netStat  = new String[] {"/bin/bash", "-c", "netStat", "with", "args"};
+					Process proc = new ProcessBuilder(netStat).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
+            	}
             	
             	else if(inputLine.equals("5")) {
-            		String user = System.getProperty("user.name");
-            		out.println(user);
-            		//Host current users
-        			//Command: users
+            		String[] currentUser  = new String[] {"/bin/bash", "-c", "user", "with", "args"};
+					Process proc = new ProcessBuilder(currentUser).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
             	}
             	
-            	/*else if(inputLine.equals("6")) {
-            		//Host running processes
-        			//Command: ps aux (or just 'ps' for a much shorter output...)
-            	}*/
+            	else if(inputLine.equals("6")) {
+            		String[] processes  = new String[] {"/bin/bash", "-c", "ps", "with", "args"};
+					Process proc = new ProcessBuilder(processes).start();
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					String send= "";
+                    while((line = reader.readLine()) != null) {
+                            out.println(send + "\n");
+                    }
+            	}
             	
             	else if(inputLine.equals("7")) {
             		out.println("Disconnected");
