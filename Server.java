@@ -8,12 +8,12 @@ import java.lang.management.RuntimeMXBean;
 public class Server {
     public static void main(String[] args) throws IOException {
          
-        if (args.length != 1) {
+        /*if (args.length != 1) {
             System.err.println("Usage: java EchoServer <port number>");
             System.exit(1);
-        }
+        }*/
          
-        int portNumber = Integer.parseInt(args[0]);
+        int portNumber = 192.168.101.108:8000 //Integer.parseInt(args[0]);
          
         try (
             ServerSocket serverSocket = new ServerSocket(Integer.parseInt(args[0]));
