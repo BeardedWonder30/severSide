@@ -52,9 +52,12 @@ public class Server {
 					Process proc = new ProcessBuilder(memory).start();
 
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-					String send= "";
-					send = reader.readLine();
-					while((send = reader.readLine()) != null) {
+					String[] send = new String[];
+					for (int i = 0; i < send.length; i++) {
+						send = reader.readLine();
+					}
+					
+					while((send != null) {
 						out.println(send);
 					}
 					
