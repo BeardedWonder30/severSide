@@ -47,21 +47,29 @@ public class Server {
                     }
             	}
             	
-            	else if(inputLine.equals("3")) {
+            	/*else if(inputLine.equals("3")) {
             		String[] memory  = new String[] {"/bin/bash", "-c", "free", "with", "args"};
 					Process proc = new ProcessBuilder(memory).start();
 
 					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-					String[] send = new String[];
-					for (int i = 0; i < send.length; i++) {
-						send = reader.readLine();
-					}
-					
-					while((send != null) {
+					String send = "";
+					while((send == reader.readLine()) != null) {
 						out.println(send);
 					}
 					
-				}
+				}*/
+				else if(inputLine.equals("3")) {
+            		String[] memory  = new String[] {"/bin/bash", "-c", "free", "with", "args"};
+					Process proc = new ProcessBuilder(memory).start();
+
+					BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+					//String send = "";
+					StringBuilder send = new StringBuilder();
+					char[] buffer = new char[1024];
+					int length;
+					while ((length = reader.read(buffer)) > 0) {
+						send.append(buffer, 0, length);
+					}
                     
             	
             	
